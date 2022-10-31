@@ -7,7 +7,6 @@ const path = require('path')
 const entryPoints = [
     "application.js",
 ]
-
 const watchDirectories = [
     "./app/javascript/**/*.js",
     "./app/views/**/*.html.erb",
@@ -51,13 +50,12 @@ async function rebuild() {
         if (path.includes("javascript")) {
             result.rebuild()
         }
-
         clients.forEach((res) => res.write('data: update\n\n'))
         clients.length = 0
     });
 }
 
-if (process.argv.includes('--rebuild')) {
+if (process.argv.includes("--rebuild")) {
     rebuild()
 } else {
     esbuild.build({

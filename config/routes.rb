@@ -1,9 +1,26 @@
 Rails.application.routes.draw do
-  root to: 'dashboard#show'
+  resources :jobs
+  devise_for :users,
+             path: '',
+             controllers: {
+               registrations: 'users/registrations',
+               sessions: 'users/sessions',
+             },
+             path_names: {
+               sign_in: 'login',
+               password: 'forgot',
+               confirmation: 'confirm',
+               sign_up: 'sign_up',
+               sign_out: 'sign_out'
+             }
 
   get 'dashboard/show'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  authenticated :user do
+    root to: 'dashboard#show', as: :user_root
+  end
+
+  devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
 end

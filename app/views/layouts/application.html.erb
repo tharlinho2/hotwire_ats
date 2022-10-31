@@ -11,7 +11,25 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body data-controller="slideover">
+    <div class="flex flex-col h-screen justify-between px-4 md:px-0">
+      <%= render "nav/top_nav" %>
+
+      <main class="mb-auto w-full overflow-auto">
+        <div class="mx-auto max-w-7xl md:px-6 lg:px-8 py-8">
+          <%= yield %>
+        </div>
+      </main>
+
+      <%= render "shared/footer" %>
+
+      <div id="flash-container">
+        <% flash.each do |key, value| %>
+          <%= render "shared/flash", level: key, content: value %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= render 'shared/slideover' %>
   </body>
 </html>
