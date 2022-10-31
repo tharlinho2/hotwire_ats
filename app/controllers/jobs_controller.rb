@@ -14,14 +14,16 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     html = render_to_string(partial: 'form', locals: { job: Job.new })
+
     render operations: cable_car
-       .inner_html('#slideover-content', html: html)
-       .text_content('#slideover-header', text: 'Post a new job')
+      .inner_html('#slideover-content', html: html)
+      .text_content('#slideover-header', text: 'Post a new job')
   end
 
   # GET /jobs/1/edit
   def edit
     html = render_to_string(partial: 'form', locals: { job: @job })
+
     render operations: cable_car
       .inner_html('#slideover-content', html: html)
       .text_content('#slideover-header', text: 'Update job')
@@ -34,13 +36,15 @@ class JobsController < ApplicationController
 
     if @job.save
       html = render_to_string(partial: 'job', locals: { job: @job })
+
       render operations: cable_car
-        .prepend("#jobs", html: html)
+        .prepend('#jobs', html: html)
         .dispatch_event(name: 'submit:success')
     else
       html = render_to_string(partial: 'form', locals: { job: @job })
+
       render operations: cable_car
-        .inner_html("#job-form", html: html), status: :unprocessable_entity
+        .inner_html('#job-form', html: html), status: :unprocessable_entity
     end
   end
 
@@ -49,12 +53,12 @@ class JobsController < ApplicationController
     if @job.update(job_params)
       html = render_to_string(partial: 'job', locals: { job: @job })
       render operations: cable_car
-                           .replace(dom_id(@job), html: html)
-                           .dispatch_event(name: 'submit:success')
+         .replace(dom_id(@job), html: html)
+         .dispatch_event(name: 'submit:success')
     else
       html = render_to_string(partial: 'form', locals: { job: @job })
       render operations: cable_car
-                           .inner_html('#job-form', html: html), status: :unprocessable_entity
+         .inner_html('#job-form', html: html), status: :unprocessable_entity
     end
   end
 
