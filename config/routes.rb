@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :applicants do
     patch :change_stage, on: :member
+    resources :emails, only: %i[index new create show]
     get :resume, action: :show, controller: 'resumes'
   end
 
@@ -51,4 +52,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: 'devise/sessions#new'
   end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
