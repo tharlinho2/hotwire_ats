@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :filesystem_items
+
   resources :todos do
     member do
       patch :move
@@ -20,8 +21,10 @@ Rails.application.routes.draw do
   end
 
   resources :lists
+
   resources :applicants do
     patch :change_stage, on: :member
+    get :resume, action: :show, controller: 'resumes'
   end
 
   resources :jobs
