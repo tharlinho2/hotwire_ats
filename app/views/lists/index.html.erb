@@ -1,0 +1,14 @@
+<h1>Lists</h1>
+
+<ul>
+  <% @lists.each do |list| %>
+    <%= content_tag :li, data: { 'list-target' => 'list' , sgid: list.to_sgid_param } do %>
+        <%= list.name %>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "New list", new_list_path %>
+
+
+

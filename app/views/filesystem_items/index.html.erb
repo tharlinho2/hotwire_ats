@@ -1,0 +1,49 @@
+<!--<p style="color: green"><%#= notice %></p>-->
+
+<!--<h1>Filesystem items</h1>-->
+
+<!--<div id="filesystem_items">-->
+  <%# @filesystem_items.each do |filesystem_item| %>
+    <%#= render filesystem_item %>
+<!--    <p>-->
+      <%#= link_to "Show this filesystem item", filesystem_item %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>-->
+
+<%#= link_to "New filesystem item", new_filesystem_item_path %>
+
+
+<div class="flex", >
+
+  <div class="h-fit w-full p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex flex-row justify-between p-4">
+      <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Filesystems</h5>
+
+      <%= link_to new_filesystem_item_path, data: { action: "mouseup->slideover#open", remote: true } do %>
+          <h1>+</h1>
+      <% end %>
+    </div>
+
+    <div id="filesystem_items" class="p-4">
+      <% @filesystem_items.each do |item| %>
+          <%= render item %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="w-full ml-12 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex flex-row justify-between p-4">
+      <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Items</h5>
+
+      <%= link_to new_filesystem_item_path do %>
+        <h1>+</h1>
+      <% end %>
+    </div>
+
+    <div class="p-4">
+      <div id="items"></div>
+    </div>
+  </div>
+
+</div>

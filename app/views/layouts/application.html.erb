@@ -19,7 +19,7 @@
         <%= yield %>
       </div>
     </main>
-    <%= render "shared/footer" %>
+    <%#= render "shared/footer" %>
     <div id="flash-container">
       <% flash.each do |key, value| %>
         <%= render "shared/flash", level: key, content: value %>

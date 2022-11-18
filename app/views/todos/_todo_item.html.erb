@@ -1,0 +1,10 @@
+<div data-controller="list-item" data-list-item-url="/list_items/:id/move">
+
+  <% items.order(position: :asc).each do |item| %>
+    <div data-id="<%= item.id %>" class="flex flex-col pb-3">
+      <dd class="text-lg font-semibold"><%= item.description %></dd>
+    </div>
+  <% end %>
+
+</div>
+

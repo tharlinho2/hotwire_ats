@@ -1,0 +1,16 @@
+<%= link_to "New todo", new_todo_path %>
+
+<div class="flex" >
+  <dl data-controller="list" data-list-url="/todo_list/:id/move" class="mt-8 p-2 rounded border border-gray-200 dark:border-gray-700 max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
+    <% @todos_list.each do |todo| %>
+        <div data-id="<%= todo.id %>" class="flex flex-col pb-3" >
+          <%= link_to todo.name, todo_list_path(todo), data: { remote: true }, class: "text-lg text-blue-600 hover:text-blue-700" %>
+        </div>
+    <% end %>
+  </dl>
+
+  <dl class="w-96 mt-8 ml-12 p-2 rounded border border-gray-200 dark:border-gray-700 max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
+    <div id="todo-items"></div>
+  </dl>
+
+</div>

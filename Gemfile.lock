@@ -78,6 +78,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    acts_as_list (1.0.4)
+      activerecord (>= 4.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
@@ -86,6 +88,9 @@ GEM
     cable_ready (5.0.0.pre8)
       rails (>= 5.2)
       thread-local (>= 1.1.0)
+    closure_tree (7.4.0)
+      activerecord (>= 4.2.10)
+      with_advisory_lock (>= 4.0.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     cssbundling-rails (1.1.1)
@@ -113,6 +118,9 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
+    kredis (1.3.0)
+      activesupport (>= 6.0.0)
+      redis (>= 4.2, < 6)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -137,6 +145,9 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.4)
+    pg_search (2.3.6)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -212,13 +223,17 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    with_advisory_lock (4.6.0)
+      activerecord (>= 4.2)
     zeitwerk (2.6.1)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  acts_as_list
   bootsnap
+  closure_tree
   cssbundling-rails
   debug
   devise!
@@ -226,7 +241,9 @@ DEPENDENCIES
   inline_svg (~> 1.8)
   jbuilder
   jsbundling-rails
+  kredis
   pg (~> 1.1)
+  pg_search
   puma (~> 5.0)
   rails (~> 7.0.4)
   redis (~> 4.0)

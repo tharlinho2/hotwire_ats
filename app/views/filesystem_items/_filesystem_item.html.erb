@@ -1,0 +1,8 @@
+<div id="<%= dom_id filesystem_item %>">
+  <%= link_to filesystem_item, remote: true do %>
+    <div class="mt-2 justify-between items-center p-2 bg-white rounded-lg border border-gray-200 shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
+      <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">just now</time>
+      <div class="text-sm font-normal text-gray-500 dark:text-gray-300"><%= filesystem_item.name %></div>
+    </div>
+  <% end %>
+</div>

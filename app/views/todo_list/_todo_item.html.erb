@@ -1,0 +1,10 @@
+<div data-controller="list-item" data-list-item-url="/todo_list/:id/move_item">
+
+  <% items.each do |item| %>
+    <div data-id="<%= item.id %>" data-todo-id="<%= item.todo_list.id %>" class="flex flex-col pb-3">
+      <dd class="text-lg font-semibold"><%= item.name %></dd>
+    </div>
+  <% end %>
+
+</div>
+

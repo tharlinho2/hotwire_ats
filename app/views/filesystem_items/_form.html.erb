@@ -1,0 +1,20 @@
+<%= form_with(model: filesystem_item, html: { class: "space-y-6" }, data: { remote: true }) do |form| %>
+  <% if filesystem_item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(filesystem_item.errors.count, "error") %> prohibited this filesystem_item from being saved:</h2>
+
+      <ul>
+        <% filesystem_item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, class: "mt-1" %>
+  </div>
+
+  <%= form.submit 'Submit', class: 'btn-primary float-right' %>
+<% end %>

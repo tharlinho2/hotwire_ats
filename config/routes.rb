@@ -1,4 +1,25 @@
 Rails.application.routes.draw do
+  resources :filesystem_items
+  resources :todos do
+    member do
+      patch :move
+    end
+  end
+
+  resources :list_items do
+    member do
+      patch :move
+    end
+  end
+
+  resources :todo_list do
+    member do
+      patch :move
+      patch :move_item
+    end
+  end
+
+  resources :lists
   resources :applicants do
     patch :change_stage, on: :member
   end

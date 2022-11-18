@@ -16,8 +16,17 @@ application.register("drag", DragController)
 import DraggableController from "./draggable_controller"
 application.register("draggable", DraggableController)
 
+import FormController from "./form_controller"
+application.register("form", FormController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ListController from "./list_controller"
+application.register("list", ListController)
+
+import ListItemController from "./list_item_controller"
+application.register("list-item", ListItemController)
 
 import SlideoverController from "./slideover_controller"
 application.register("slideover", SlideoverController)
