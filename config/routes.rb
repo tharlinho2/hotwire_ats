@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :filesystem_items
 
+  resources :notifications, only: %i[index]
+
   resources :todos do
     member do
       patch :move

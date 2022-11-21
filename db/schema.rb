@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_18_194614) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_115316) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -131,6 +131,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_194614) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.datetime "read_at"
+    t.jsonb "params"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "tag_hierarchies", id: false, force: :cascade do |t|
     t.uuid "ancestor_id", null: false
     t.uuid "descendant_id", null: false
@@ -213,6 +223,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_194614) do
   add_foreign_key "emails", "applicants"
   add_foreign_key "emails", "users"
   add_foreign_key "jobs", "accounts"
+  add_foreign_key "notifications", "users"
   add_foreign_key "todo_filhos", "todo_lists"
   add_foreign_key "todo_items", "todos"
   add_foreign_key "users", "accounts"

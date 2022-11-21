@@ -3,6 +3,8 @@ class Email < ApplicationRecord
   after_create_commit :broadcast_to_applicant
   has_rich_text :body
 
+  after_create_commit :create_notification
+
   belongs_to :applicant
   belongs_to :user
 
@@ -41,6 +43,16 @@ class Email < ApplicationRecord
       locals: {
         email: self,
         applicant: applicant
+      }
+    )
+  end
+
+  def create_notification
+    InboundEmailNotification.create(
+      user: user,
+      params: {
+        applicant: applicant,
+        email: self
       }
     )
   end

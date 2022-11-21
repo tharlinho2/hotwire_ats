@@ -8,6 +8,7 @@ class User < ApplicationRecord
   belongs_to :account
   accepts_nested_attributes_for :account
   has_many :emails, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   def generate_alias
     email_alias = "#{email.split('@')[0]}-#{id[0...4]}"
